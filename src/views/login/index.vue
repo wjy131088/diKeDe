@@ -1,11 +1,6 @@
 <template>
   <div class="login-container">
     <el-form ref="loginForm" :model="loginForm" :rules="loginRules" class="login-form" auto-complete="on" label-position="left">
-
-      <div class="title-container">
-        <h3 class="title">Login Form</h3>
-      </div>
-
       <el-form-item prop="username">
         <span class="svg-container">
           <svg-icon icon-class="user" />
@@ -20,7 +15,6 @@
           auto-complete="on"
         />
       </el-form-item>
-
       <el-form-item prop="password">
         <span class="svg-container">
           <svg-icon icon-class="password" />
@@ -40,15 +34,12 @@
           <svg-icon :icon-class="passwordType === 'password' ? 'eye' : 'eye-open'" />
         </span>
       </el-form-item>
-
-      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">Login</el-button>
-
-      <div class="tips">
-        <span style="margin-right:20px;">username: admin</span>
-        <span> password: any</span>
-      </div>
-
+      <el-form-item>
+        <el-input />
+      </el-form-item>
+      <el-button :loading="loading" type="primary" style="width:100%;margin-bottom:30px;" @click.native.prevent="handleLogin">登录</el-button>
     </el-form>
+
   </div>
 </template>
 
@@ -141,13 +132,14 @@ $cursor: #fff;
 
 /* reset element-ui css */
 .login-container {
+  background-image: url('~@/assets/common/background.png'); // 设置背景图片
+  background-position: center; // 将图片位置设置为充满整个屏幕
   .el-input {
     display: inline-block;
     height: 47px;
     width: 85%;
-
     input {
-      background: transparent;
+      background: $cursor;
       border: 0px;
       -webkit-appearance: none;
       border-radius: 0px;
@@ -162,10 +154,9 @@ $cursor: #fff;
       }
     }
   }
-
   .el-form-item {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.1);
+    border: 1px solid #e2e2e2;
+    background: $cursor;
     border-radius: 5px;
     color: #454545;
   }
@@ -184,26 +175,22 @@ $light_gray:#eee;
   overflow: hidden;
 
   .login-form {
-    position: relative;
+    position: absolute;
     width: 520px;
     max-width: 100%;
     padding: 160px 35px 0;
     margin: 0 auto;
     overflow: hidden;
+    height: 388px;
+    top: 50%;
+    left: 50%;
+    margin-top: -194px;
+    margin-left: -259px;
+    padding: 76px 35px 0;
+    background: #fff;
+    box-shadow: 0 3px 70px 0 rgb(30 111 72 / 35%);
+    border-radius: 10px;
   }
-
-  .tips {
-    font-size: 14px;
-    color: #fff;
-    margin-bottom: 10px;
-
-    span {
-      &:first-of-type {
-        margin-right: 16px;
-      }
-    }
-  }
-
   .svg-container {
     padding: 6px 5px 6px 15px;
     color: $dark_gray;
